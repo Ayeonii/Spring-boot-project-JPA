@@ -7,8 +7,10 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor; // Predicate란 ‘이 조건이 맞다’고 판단하는 근거를 함수로 제공하는 것
 
-public interface ItemRepository extends JpaRepository<Item, Long> {
+
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
     List<Item> findByItemNm(String itemNm);
     List<Item> findByItemNmOrItemDetail(String nm, String desc);
     List<Item> findByPriceLessThan(Integer price);
@@ -35,4 +37,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     */
     @Query(value="SELECT * FROM Item i WHERE i.item_detail LIKE %:itemDetail% ORDER BY i.price DESC", nativeQuery=true)
     List<Item> findByItemDetailByNative(@Param("itemDetail" ) String itemDetail);
+
+
+
 }
