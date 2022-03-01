@@ -44,7 +44,7 @@ public class Member {
         member.setName(memberFormDto.getName());
         member.setEmail(memberFormDto.getEmail());
         member.setAddress(memberFormDto.getAddress());
-        member.setRole(Role.USER);
+        member.setRole(Role.ADMIN);  //Member 엔티티 생성시, User Role 에 따라 생성되는 계정의 역할이 달라짐
 
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
