@@ -1,6 +1,7 @@
 package com.shop.entity;
 
 import com.shop.constant.ItemSellStatus;
+import com.shop.dto.ItemFormDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Item {
+public class Item extends BaseEntity{
 
     @Id                                             // 기본키가 되는 멤버변수에 @Id
     @Column(name="item_id")                         // 테이블에 매핑될 컬럼의 이름을 @Column
@@ -40,5 +41,13 @@ public class Item {
     private LocalDateTime regTime; // 등록 시간
 
     private LocalDateTime updateTime; // 수정 시간
+
+    public void updateItem(ItemFormDto itemFormDto){
+        this.itemNm = itemFormDto.getItemNm();
+        this.price = itemFormDto.getPrice();
+        this.stockNumber = itemFormDto.getStockNumber();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
 }
 
