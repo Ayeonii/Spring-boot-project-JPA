@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor; // Predicate란 ‘이 조건이 맞다’고 판단하는 근거를 함수로 제공하는 것
 
 
-public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
     List<Item> findByItemNm(String itemNm);
     List<Item> findByItemNmOrItemDetail(String nm, String desc);
     List<Item> findByPriceLessThan(Integer price);
