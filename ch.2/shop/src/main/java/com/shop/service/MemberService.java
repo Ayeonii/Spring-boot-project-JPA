@@ -58,7 +58,7 @@ public class MemberService implements UserDetailsService {
         }
 
         return User.builder()                           //UserDetail을 구현하고 있는 User 객체를 반환해준다.
-                .username(member.getName())
+                .username(member.getEmail())
                 .password(member.getPassword())
                 .roles(member.getRole().toString())
                 .build();
