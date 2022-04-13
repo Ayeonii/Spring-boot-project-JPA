@@ -28,7 +28,7 @@ public class ItemImgService {
         //파일 업로드
         if(!StringUtils.isEmpty(oriImgName)){
             imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes()); // 파일저장
-            imgUrl = "/images/item" + imgName;                  // 저장한 상품 이미지를 불러올 경로를 설정.
+            imgUrl = "/images/item/" + imgName;                  // 저장한 상품 이미지를 불러올 경로를 설정.
                                                             // WebMvcConfig 와 application.properties 에 설정한 uploadPath 참조하여 설정
         }
 
